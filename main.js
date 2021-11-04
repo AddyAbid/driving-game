@@ -2,7 +2,6 @@
 /* exported data */
 
 var $car = document.querySelector('.car');
-
 document.addEventListener('keydown', changeDirection);
 document.addEventListener('keydown', spaceBarClick);
 function changeDirection(event) {
@@ -23,6 +22,8 @@ function changeDirection(event) {
 var distance = 0;
 
 function moveCar() {
+  data.xValue = $car.x;
+  data.yvalue = $car.y;
   distance++;
   $car.style.left = distance + 'rem';
 }
