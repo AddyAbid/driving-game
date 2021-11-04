@@ -2,8 +2,11 @@
 /* exported data */
 
 var $car = document.querySelector('.car');
+
 document.addEventListener('keydown', changeDirection);
 document.addEventListener('keydown', spaceBarClick);
+// document.addEventListener('keydown', stopCar);
+
 function changeDirection(event) {
   if (event.keyCode === 38) {
     $car.className = 'car north';
@@ -19,7 +22,9 @@ function changeDirection(event) {
     data.direction = 'south';
   }
 }
+
 var distance = 0;
+var timerId = null;
 
 function moveCar() {
   data.xValue = $car.x;
@@ -29,7 +34,11 @@ function moveCar() {
 }
 
 function spaceBarClick(event) {
-  if (event.keyCode === 32) {
-    setInterval(moveCar, 16);
+  if (event.keyCode === 32 && data.isOn === false) {
+    timerId = setInterval(moveCar, 16);
+    data.isOn = true;
+  } else {
+    clearInterval(timerId);
+    data.isOn = false;
   }
 }
