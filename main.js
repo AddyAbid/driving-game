@@ -5,7 +5,7 @@ var $car = document.querySelector('.car');
 
 document.addEventListener('keydown', changeDirection);
 document.addEventListener('keydown', spaceBarClick);
-document.addEventListener('keydown', stopCar);
+// document.addEventListener('keydown', stopCar);
 
 function changeDirection(event) {
   if (event.keyCode === 38) {
@@ -34,13 +34,11 @@ function moveCar() {
 }
 
 function spaceBarClick(event) {
-  if (event.keyCode === 32) {
+  if (event.keyCode === 32 && data.isOn === false) {
     timerId = setInterval(moveCar, 16);
-  }
-}
-
-function stopCar(event) {
-  if (event.keyCode === 32) {
+    data.isOn = true;
+  } else {
     clearInterval(timerId);
+    data.isOn = false;
   }
 }
