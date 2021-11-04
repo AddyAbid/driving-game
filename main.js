@@ -3,7 +3,7 @@
 
 var $car = document.querySelector('.car');
 document.addEventListener('keydown', changeDirection);
-
+document.addEventListener('keydown', spaceBarClick);
 function changeDirection(event) {
   if (event.keyCode === 38) {
     $car.className = 'car north';
@@ -17,5 +17,19 @@ function changeDirection(event) {
   } else if (event.keyCode === 40) {
     $car.className = 'car south';
     data.direction = 'south';
+  }
+}
+var distance = 0;
+
+function moveCar() {
+  data.xValue = $car.x;
+  data.yvalue = $car.y;
+  distance++;
+  $car.style.left = distance + 'rem';
+}
+
+function spaceBarClick(event) {
+  if (event.keyCode === 32) {
+    setInterval(moveCar, 16);
   }
 }
