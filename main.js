@@ -2,6 +2,7 @@
 /* exported data */
 
 var $car = document.querySelector('.car');
+
 document.addEventListener('keydown', changeDirection);
 
 function changeDirection(event) {
