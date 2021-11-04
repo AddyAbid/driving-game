@@ -4,6 +4,7 @@
 
 .car {
   width: 20%;
+  position: absolute;
 }
 
 .north {
